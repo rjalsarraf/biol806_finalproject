@@ -3,6 +3,8 @@ title: "Final Project"
 author: "Rawan AlSarraf"
 format: pdf
 editor: visual
+editor_options: 
+  chunk_output_type: console
 ---
 
 Testing push from R to GitHub
@@ -13,22 +15,38 @@ Testing to make sure this actually works.
 library(tidyverse)
 
 data_raw <- read.csv("~/Desktop/IWCR/envirpeer.csv")
+```
 
-general_info <- data_raw %>%
-  select(record_id:mm_sup_num)
-
-wt_history <- data_raw %>%
-  select(record_id, wh_ficm1:wh_approach)
-
-my_fd_env <- data_raw %>%
-  select(record_id, me_fresh_fr:mesa_foodenv_score)
-
+Social Support
+```{r}
 social_support <- data_raw %>%
   select(record_id, me_unheathy:sallis_exercise)
 
 ss_clean <- social_support %>%
+  drop_na() #dropped 1,849
+```
+
+Food Environment
+```{r}
+my_fd_env <- data_raw %>%
+  select(record_id, me_fresh_fr:mesa_foodenv_score)
+
+fd_env_clean <- my_fd_env %>%
+  drop_na() #dropped 1,830
+```
+
+Weight History
+```{r}
+wt_history <- data_raw %>%
+  select(record_id, wh_ficm1:wh_approach)
+```
+
+General
+```{r}
+general_info <- data_raw %>%
+  select(record_id:mm_sup_num)
+
+gen_info_clean <- general_info %>%
   drop_na()
-
-
 ```
 
