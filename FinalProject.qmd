@@ -1,52 +1,102 @@
 ---
-title: "Final Project"
+title: "Correlations between Social Support, Perceived Food Environment, and Weight Status"
 author: "Rawan AlSarraf"
 format: pdf
 editor: visual
 editor_options: 
   chunk_output_type: console
 ---
-
-Testing push from R to GitHub
-
-Testing to make sure this actually works.
-
 ```{r}
 library(tidyverse)
+library(formatR)
 
+knitr::opts_chunk$set(echo = TRUE,tidy.opts=list(width.cutoff=30), tidy=TRUE)
+```
+
+## Introduction
+
+Obesity is a multifactorial disease, characterized by high weight status and excessive adipose tissue. People affected by obesity have a higher risk of developing a multitude of comorbidities including Type 2 Diabetes Mellitus, cardiovascular disease, cancer, and mortality (Valenzuela 2023). Approximately 40% of the global population has overweight or obesity (Cani 2023), and presently within the United States, the Centers for Disease Control and Prevention reports that at least 20% of adults live with obesity (CDC).
+
+Socioecological models of health posit that there are multiple layers of influence, upstream from one’s personal behaviors, that guide one’s decisions and actions (Ayala-Marín 2020). Factors such as socioeconomic status, physical environment, education level, and social relationships are established influencers of one’s weight status (Glonti 2016, Wang 2007, Mackenbach 2019). While correlations have been recognized between nonbiological determinants (NBD) and weight status, more research is necessary to understand the directionality of these correlations.
+
+#### Social Support
+
+Social support is known to correlate with weight status throughout multiple cohort studies, although yielding mixed results. A seminal study in the Framingham Heart Study found that an individual’s risk of obesity increases by 45% if a member of their social circle had obesity (Christakis 2007). Interestingly, the increased risk of obesity remained significant through 3 degrees of separation. Self-identified Hispanic or Latino participants in Southeast Minnesota were four times more likely to experience intentions of weight loss if those in their social circles were trying to lose weight (Wieland 2020), and social network structure and communication frequency are significantly associated with BMI in community-dwelling, Korean older adults (Lee 2013). A cross-sectional study in the Latino Men’s Health Initiative found that increased perceived social support was associated with an increased odds of having overweight or obesity status (Craven 2018). Conversely, a study in the Canadian Longitudinal Study on Aging found that the odds of general obesity were higher in women with the least amount of social support compared to those with the highest amount of support (Hosseini 2021).  Researchers have found that certain aspects of social support, such as social cohesion and trust within the neighborhood, were significantly associated with BMI (Hoenink 2019). The differences observed between populations call for more research to further understand how certain populations interact with social support.
+
+#### Perceived Food Environment
+
+Perceived food environment (PFE) is not strictly defined, however understanding how one’s interactions with their environment correlates with their food behavior, and ultimately, weight status, has been of interest recently. The importance of capturing an individual’s lived experience is due to the fact that certain aspects of food behavior, such as cultural norms or food preferences, are not quantifiable solely by appraising one’s objective food environment, often defined by parameters of availability, accessibility, and affordability (Gao 2022, Inglis 2007). One study found that the perceived price of fruits and vegetables was significantly associated with an individual’s BMI (Alber 2018). Additionally, there was a significant association between the perceived quality of fruits and vegetables and fruit and vegetable intake (Abler 2018). Participants of the Multi-Ethnic Study of Atherosclerosis that had better perception of healthy food access had higher diet quality compared to those with a negative perception of their food environment, over a 10 year period. Measures of perceived availability and affordability of fresh produce and local, healthy food options were predictive of fruit consumption in a study including participants of the Socioeconomic Status and Activity in Women Study (Inglis 2007). When taking into account education level, the same measures were additionally predictive of vegetable consumption. Interestingly, Ingles et al. concluded that by focusing on PFE, we may be able to reduce differences in women’s diets caused by socioeconomic status.
+
+Perception of food environment is not limited to accessibility and pricing of food. The risk of obesity and overweight increased with lowered perceived safety from traffic and crime in participants of a community-based physical activity intervention study (Boehmer 2006). One study found that the perceived availability of fast food shops and convenience stores was significantly associated with moderate-to-high intake of high-fat foods and soft drinks in adolescents in Hong Kong (Ho 2010). Another study sought to understand the relationship between price, availability, marketing, and product placement, and fruit and vegetable consumption to find that marketing was the only measure associated with vegetable intake (Zhao 2020). Participants of the Chicago Healthy Eating Environments and Resources Study had higher vegetable intake when reported awareness of “healthy food signs” in their grocery store (Zhao 2020).
+
+*(Something here about why it is important to do this study specifically, considering all these mixed results? Or is this too long already?)*
+
+## Methods
+
+#### International Weight Control Registry (IWCR)
+
+International Weight Control Registry is a web-based, longitudinal study seeking to identify weight management strategies in an international population (Roberts 2022). Eligibility criteria include adults over 18 years old in participating countries having attempted weight loss, or are interested in attempting weight loss. Participants are directed to an online, secure platform to complete a comprehensive set of questionnaires encompassing behavioral, environmental, psychosocial, and biological domains relevant to obesity and weight management. Measures are chosen within the framework of the Accumulating Data to Optimally Predict Obesity Treatment (ADOPT) initiative.
+
+For the purposes of this study, four questionnaires will be utilized measuring social support, perceived food environment, weight history, and general health and demographic information. Additionally, this study will solely utilize data from a subset of the study population within the United States.
+
+#### Statistical Methods
+
+The primary goal is to determine the relative contributions of social support and the food environment to weight status, then determine if this relationship differs according to racial and ethnic background.
+
+*There are a couple ways I'm thinking of going about this. I could use weight or BMI as a continuous variable and survey scores as continuous as well, then use a linear regression. I could also categorize BMI (let's say 3 categories for now; underweight, normal, overweight), then categorize the scores (e.g. high social support, medium, low) and do a logistic/binomial regression. None of my scores (mesa_foodenv_score, sallis_diet_discourage, sallis_diet_encourage, sallis_exercise) are normally distributed, though.*
+
+#### Data preparation
+
+Prior preparation was conducted to produce the current datasets. The preparation included removing records with implausible height, weight, BMI, and age (Koebnick 2012, Pyrkov 2021). Additional records were removed based on an executive committee decision, due to a possible website breach.
+
+*(Long story short, there was a period of high website traffic without any increase in recruitment efforts, the demographics didn't reflect the target population, and the data were "impossible/implausible" (e.g. age \>120 years or weight \<30lb), leading to the committee believing it was "fraudulent and fabricated data". I'm not sure how to write all of this out or if it's relevant or not)*
+
+Next, the individual surveys (Social Support, My Food Environment, Weight History, and More About Me) were separated in order to remove participants with incomplete survey responses from the analysis. Of the initial 3,205 records, 1,356 participants completed Social Support, and 1,375 participants completed My Food Environment.
+
+General Information
+```{r}
 data_raw <- read.csv("~/Desktop/IWCR/envirpeer.csv")
+
+general_info <- data_raw %>%
+  select(record_id:mm_med_7, mm_cond_10:mm_med_11, mm_cond_18, mm_med_18, mm_eatdisorder:mm_cur_n_med, mm_menop, wh_ht_m, BMI_currentwt, wh_ficm1, wh_cur_weight_select, wh_weight_2020_pounds, wh_weight_2020_kgs) %>%
+  filter(!is.na(BMI_currentwt)) #dropped 383, n=2,822
 ```
 
 Social Support
 ```{r}
 social_support <- data_raw %>%
-  select(record_id, me_unheathy:sallis_exercise)
+  select(record_id, me_unheathy:sallis_exercise) %>%
+  drop_na() #dropped 1,849, n=1,356
 
-ss_clean <- social_support %>%
-  drop_na() #dropped 1,849
+ss_final <- left_join(social_support, general_info,
+                      join_by(record_id == record_id))
+
+
+corr1 <- cor.test(ss_final$sallis_diet_discourage , ss_final$BMI_currentwt , method="spearman") 
+corr1 #(p=0.064, rho=0.052) no/weak correlation
+
+corr2 <- cor.test(ss_final$sallis_diet_encourage, ss_final$BMI_currentwt, method="spearman")
+corr2 #(p=4.805e-06, rho=0.12) weak positive statistically significant correlation
+
+corr3 <- cor.test(ss_final$sallis_exercise, ss_final$BMI_currentwt, method="spearman")
+corr3 #(p=5.556e-12, rho=-0.19) weak negative statistically significant correlation
 ```
+According to Spearman's correlation test, there are weak correlations between encouraging support, exercise support, and BMI. 
 
-Food Environment
+
+My Food Environment
 ```{r}
 my_fd_env <- data_raw %>%
-  select(record_id, me_fresh_fr:mesa_foodenv_score)
+  select(record_id, me_fresh_fr:mesa_foodenv_score) %>%
+  drop_na() #dropped 1,830, n=1,375
 
-fd_env_clean <- my_fd_env %>%
-  drop_na() #dropped 1,830
+fde_final <- left_join(my_fd_env, general_info,
+                      join_by(record_id == record_id))
+
+corr4 <- cor.test(fde_final$mesa_foodenv_score, fde_final$BMI_currentwt, method="spearman")
+corr4
+
+linmod <- lm(BMI_currentwt ~ mesa_foodenv_score, data=fde_final)
+summary(linmod)
 ```
-
-Weight History
-```{r}
-wt_history <- data_raw %>%
-  select(record_id, wh_ficm1:wh_approach)
-```
-
-General
-```{r}
-general_info <- data_raw %>%
-  select(record_id:mm_sup_num)
-
-gen_info_clean <- general_info %>%
-  drop_na()
-```
-
+According to Spearman's correlation test, there is a statistically significant (p=6.243e-08) but weak (-0.15), negative correlation between PFE and BMI. The linear model using BMI as an outcome predicts a 0.33 unit decrease in BMI with every unit increase in the MESA Food Environment scale. *I don't think these are enough though, and I'm not sure what the next move is.*
