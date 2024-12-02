@@ -6,9 +6,13 @@ editor: visual
 editor_options: 
   chunk_output_type: console
 ---
+
 ```{r}
 library(tidyverse)
 library(formatR)
+library(knitr)
+install.packages("kableExtra")
+library(kableExtra)
 
 knitr::opts_chunk$set(echo = TRUE,tidy.opts=list(width.cutoff=30), tidy=TRUE)
 ```
@@ -17,19 +21,24 @@ knitr::opts_chunk$set(echo = TRUE,tidy.opts=list(width.cutoff=30), tidy=TRUE)
 
 Obesity is a multifactorial disease, characterized by high weight status and excessive adipose tissue. People affected by obesity have a higher risk of developing a multitude of comorbidities including Type 2 Diabetes Mellitus, cardiovascular disease, cancer, and mortality (Valenzuela 2023). Approximately 40% of the global population has overweight or obesity (Cani 2023), and presently within the United States, the Centers for Disease Control and Prevention reports that at least 20% of adults live with obesity (CDC).
 
-Socioecological models of health posit that there are multiple layers of influence, upstream from one’s personal behaviors, that guide one’s decisions and actions (Ayala-Marín 2020). Factors such as socioeconomic status, physical environment, education level, and social relationships are established influencers of one’s weight status (Glonti 2016, Wang 2007, Mackenbach 2019). While correlations have been recognized between nonbiological determinants (NBD) and weight status, more research is necessary to understand the directionality of these correlations.
+Socioecological models of health posit that there are multiple layers of influence, upstream from one’s personal behaviors, that guide one’s decisions and actions (Ayala-Marín 2020). Factors such as socioeconomic status, physical environment, education level, and social relationships are established influencers of one’s weight status (Glonti 2016, Wang 2007, Mackenbach 2019). While correlations have been recognized between nonbiological determinants (NBD) and weight status, more research is necessary to understand the directionality of these correlations. *ADD CITATION*
 
 #### Social Support
 
-Social support is known to correlate with weight status throughout multiple cohort studies, although yielding mixed results. A seminal study in the Framingham Heart Study found that an individual’s risk of obesity increases by 45% if a member of their social circle had obesity (Christakis 2007). Interestingly, the increased risk of obesity remained significant through 3 degrees of separation. Self-identified Hispanic or Latino participants in Southeast Minnesota were four times more likely to experience intentions of weight loss if those in their social circles were trying to lose weight (Wieland 2020), and social network structure and communication frequency are significantly associated with BMI in community-dwelling, Korean older adults (Lee 2013). A cross-sectional study in the Latino Men’s Health Initiative found that increased perceived social support was associated with an increased odds of having overweight or obesity status (Craven 2018). Conversely, a study in the Canadian Longitudinal Study on Aging found that the odds of general obesity were higher in women with the least amount of social support compared to those with the highest amount of support (Hosseini 2021).  Researchers have found that certain aspects of social support, such as social cohesion and trust within the neighborhood, were significantly associated with BMI (Hoenink 2019). The differences observed between populations call for more research to further understand how certain populations interact with social support.
+Social support (SS) is known to correlate with weight status throughout multiple cohort studies, although yielding mixed results. The lack of consensus within the results can be attributed to multiple factors: firstly, the term "social support" does not have an agreed-upon definition, and can quantify different aspects of social interactions depending on the study. A seminal study in the Framingham Heart Study found that an individual’s risk of obesity increases by 45% if a member of their social circle had obesity (Christakis 2007). Interestingly, the increased risk of obesity remained significant through 3 degrees of separation. In this study, the variable in question is a person's social network, or the distance between a person and a member of their network, rather than the quality of the relationship. Using a similar metric, Wieland et al. 2020 found that self-identified Hispanic/Latino participants with obesity had more network members with obesity compared to participants without obesity (Wieland 2020).
+
+In addition to the number and proximity of social networks, the structure and functionality of social networks are regularly researched. A cross-sectional study based in Europe specifically evaluated the relationship between social cohesion and trust within a neighborhood and BMI (Hoenink 2019). This aspect of social support was found to be significantly associated with BMI, as participants in neighborhoods with moderate and high social networks showed greater than 0.4kg/m\^2 decrease in BMI compared to participants in neighborhoods with low social networking. In community-dwelling, Korean older adults, communication frequency and social network structure were significantly associated with BMI in men and women (Lee 2013). Self-identified Hispanic or Latino participants were four times more likely to experience intentions of weight loss if those in their social circles were trying to lose weight, suggesting that the inner-workings of social interactions are important, too (Wieland 2020).
+
+Social support seems to interact with different racial, ethnic, sex, or gender cohorts differently. For example, Lee et al. 2013 found an interesting dimorphism concerning communication. BMI was strongly associated with network size and density compared to communication frequency in men, whereas communication and meeting frequency were significantly associated with BMI in women (Lee 2013). This discrepancy is observed across populations, as well. A cross-sectional study in the Latino Men’s Health Initiative found that increased perceived social support was associated with an increased odds of having overweight or obesity status (Craven 2018). Conversely, a study in the Canadian Longitudinal Study on Aging found that the odds of general obesity were higher in women with the least amount of social support compared to those with the highest amount of support (Hosseini 2021). The differences observed between populations call for more research to further understand how certain populations interact with social support.
 
 #### Perceived Food Environment
 
-Perceived food environment (PFE) is not strictly defined, however understanding how one’s interactions with their environment correlates with their food behavior, and ultimately, weight status, has been of interest recently. The importance of capturing an individual’s lived experience is due to the fact that certain aspects of food behavior, such as cultural norms or food preferences, are not quantifiable solely by appraising one’s objective food environment, often defined by parameters of availability, accessibility, and affordability (Gao 2022, Inglis 2007). One study found that the perceived price of fruits and vegetables was significantly associated with an individual’s BMI (Alber 2018). Additionally, there was a significant association between the perceived quality of fruits and vegetables and fruit and vegetable intake (Abler 2018). Participants of the Multi-Ethnic Study of Atherosclerosis that had better perception of healthy food access had higher diet quality compared to those with a negative perception of their food environment, over a 10 year period. Measures of perceived availability and affordability of fresh produce and local, healthy food options were predictive of fruit consumption in a study including participants of the Socioeconomic Status and Activity in Women Study (Inglis 2007). When taking into account education level, the same measures were additionally predictive of vegetable consumption. Interestingly, Ingles et al. concluded that by focusing on PFE, we may be able to reduce differences in women’s diets caused by socioeconomic status.
+Perceived food environment (PFE) is not strictly defined, however understanding how one’s interactions with their environment correlates with their food behavior, and ultimately, weight status, has been of interest recently *ADD CITATION*. The importance of capturing an individual’s lived experience is due to the fact that certain aspects of food behavior, such as cultural norms or food preferences, are not quantifiable solely by appraising one’s objective food environment, often defined by parameters of availability, accessibility, and affordability (Gao 2022, Inglis 2007). One study found that the perceived price of fruits and vegetables was significantly associated with an individual’s BMI (Alber 2018). Additionally, there was a significant association between the perceived quality of fruits and vegetables and fruit and vegetable intake (Abler 2018). Participants of the Multi-Ethnic Study of Atherosclerosis (MESA) perceiving high access to healthy foods had higher diet quality over a 10 year period, compared to those with a negative perception of their food environment. Measures of perceived availability and affordability of fresh produce and local, healthy food options were predictive of fruit consumption in a study including participants of the Socioeconomic Status and Activity in Women Study (Inglis 2007). When taking into account education level, the same measures were additionally predictive of vegetable consumption. Interestingly, Ingles et al. concluded that by focusing on PFE, we may be able to reduce differences in women’s diets caused by socioeconomic status.
 
 Perception of food environment is not limited to accessibility and pricing of food. The risk of obesity and overweight increased with lowered perceived safety from traffic and crime in participants of a community-based physical activity intervention study (Boehmer 2006). One study found that the perceived availability of fast food shops and convenience stores was significantly associated with moderate-to-high intake of high-fat foods and soft drinks in adolescents in Hong Kong (Ho 2010). Another study sought to understand the relationship between price, availability, marketing, and product placement, and fruit and vegetable consumption to find that marketing was the only measure associated with vegetable intake (Zhao 2020). Participants of the Chicago Healthy Eating Environments and Resources Study had higher vegetable intake when reported awareness of “healthy food signs” in their grocery store (Zhao 2020).
 
-*(Something here about why it is important to do this study specifically, considering all these mixed results? Or is this too long already?)*
+#### Objective
+The objective of this study is to determine the relative contributions of social support and the food environment to weight status, and if these relationships differ according to sex and racial/ethnic backgrounds.
 
 ## Methods
 
@@ -38,6 +47,8 @@ Perception of food environment is not limited to accessibility and pricing of fo
 International Weight Control Registry is a web-based, longitudinal study seeking to identify weight management strategies in an international population (Roberts 2022). Eligibility criteria include adults over 18 years old in participating countries having attempted weight loss, or are interested in attempting weight loss. Participants are directed to an online, secure platform to complete a comprehensive set of questionnaires encompassing behavioral, environmental, psychosocial, and biological domains relevant to obesity and weight management. Measures are chosen within the framework of the Accumulating Data to Optimally Predict Obesity Treatment (ADOPT) initiative.
 
 For the purposes of this study, four questionnaires will be utilized measuring social support, perceived food environment, weight history, and general health and demographic information. Additionally, this study will solely utilize data from a subset of the study population within the United States.
+
+To measure PFE, three questions were derived to quantify the availability and quality of fresh fruits and vegetables, and the availability of low-fat food products (Gao 2022, OG MESA). Participants were asked to score the extent to which they agreed with the statements using a 5-point Likert scale, with 1 being "strongly agree" and 5 being "strongly disagree". A higher summed score indicates higher perceived food availability. As for SS, the Sallis Social Support for Diet and Exercise scale was utilized, deriving three scores quantifying Diet Encouragement, Diet Discouragement, and Exercise Participation. Participants were asked to scale the frequency of the statements from 1-6, with 1 being "none", 5 being "very often", and 6 being "does not apply". Higher scores indicate greater support in the Diet Encouragement and Exercise Participation subscales, whereas a higher score in the Diet Discouragement subscale indicates more discouragement from family and friends.
 
 #### Statistical Methods
 
@@ -48,12 +59,10 @@ The primary goal is to determine the relative contributions of social support an
 #### Data preparation
 
 Prior preparation was conducted to produce the current datasets. The preparation included removing records with implausible height, weight, BMI, and age (Koebnick 2012, Pyrkov 2021). Additional records were removed based on an executive committee decision, due to a possible website breach.
-
-*(Long story short, there was a period of high website traffic without any increase in recruitment efforts, the demographics didn't reflect the target population, and the data were "impossible/implausible" (e.g. age \>120 years or weight \<30lb), leading to the committee believing it was "fraudulent and fabricated data". I'm not sure how to write all of this out or if it's relevant or not)*
-
 Next, the individual surveys (Social Support, My Food Environment, Weight History, and More About Me) were separated in order to remove participants with incomplete survey responses from the analysis. Of the initial 3,205 records, 1,356 participants completed Social Support, and 1,375 participants completed My Food Environment.
 
 General Information
+
 ```{r}
 data_raw <- read.csv("~/Desktop/IWCR/envirpeer.csv")
 
@@ -63,6 +72,7 @@ general_info <- data_raw %>%
 ```
 
 Social Support
+
 ```{r}
 social_support <- data_raw %>%
   select(record_id, me_unheathy:sallis_exercise) %>%
@@ -72,19 +82,29 @@ ss_final <- left_join(social_support, general_info,
                       join_by(record_id == record_id))
 
 
-corr1 <- cor.test(ss_final$sallis_diet_discourage , ss_final$BMI_currentwt , method="spearman") 
-corr1 #(p=0.064, rho=0.052) no/weak correlation
-
-corr2 <- cor.test(ss_final$sallis_diet_encourage, ss_final$BMI_currentwt, method="spearman")
-corr2 #(p=4.805e-06, rho=0.12) weak positive statistically significant correlation
-
-corr3 <- cor.test(ss_final$sallis_exercise, ss_final$BMI_currentwt, method="spearman")
-corr3 #(p=5.556e-12, rho=-0.19) weak negative statistically significant correlation
+# corr1 <- cor.test(ss_final$sallis_diet_discourage , ss_final$BMI_currentwt , method="spearman") 
+# corr1 #(p=0.064, rho=0.052) no/weak correlation
+# 
+# corr2 <- cor.test(ss_final$sallis_diet_encourage, ss_final$BMI_currentwt, method="spearman")
+# corr2 #(p=4.805e-06, rho=0.12) weak positive statistically significant correlation
+# 
+# corr3 <- cor.test(ss_final$sallis_exercise, ss_final$BMI_currentwt, method="spearman")
+# corr3 #(p=5.556e-12, rho=-0.19) weak negative statistically significant correlation
+# 
+# ggplot(data=ss_final, aes(x=sallis_exercise, y=BMI_currentwt)) + 
+#   geom_point()
+# 
+# ggplot(data=ss_final, aes(x=sallis_diet_encourage, y=BMI_currentwt)) + 
+#   geom_point()
+# 
+# ggplot(data=ss_final, aes(x=sallis_diet_discourage, y=BMI_currentwt)) + 
+#   geom_point()
 ```
-According to Spearman's correlation test, there are weak correlations between encouraging support, exercise support, and BMI. 
 
+According to Spearman's correlation test, there are weak correlations between encouraging support, exercise support, and BMI.
 
 My Food Environment
+
 ```{r}
 my_fd_env <- data_raw %>%
   select(record_id, me_fresh_fr:mesa_foodenv_score) %>%
@@ -92,11 +112,274 @@ my_fd_env <- data_raw %>%
 
 fde_final <- left_join(my_fd_env, general_info,
                       join_by(record_id == record_id))
+# 
+# corr4 <- cor.test(fde_final$mesa_foodenv_score, fde_final$BMI_currentwt, method="spearman")
+# corr4
+# 
+# linmod <- lm(BMI_currentwt ~ mesa_foodenv_score, data=fde_final)
+# summary(linmod)
+# 
+# ggplot(data=fde_final, aes(x=mesa_foodenv_score, y=BMI_currentwt)) + 
+#   geom_point()
 
-corr4 <- cor.test(fde_final$mesa_foodenv_score, fde_final$BMI_currentwt, method="spearman")
-corr4
-
-linmod <- lm(BMI_currentwt ~ mesa_foodenv_score, data=fde_final)
-summary(linmod)
 ```
+
 According to Spearman's correlation test, there is a statistically significant (p=6.243e-08) but weak (-0.15), negative correlation between PFE and BMI. The linear model using BMI as an outcome predicts a 0.33 unit decrease in BMI with every unit increase in the MESA Food Environment scale. *I don't think these are enough though, and I'm not sure what the next move is.*
+
+Table 1 - Participant Demos
+Age (age_baseline_y)
+Sex (mm_male_fem)
+Race/ethnicity (mm_ethnic, mm_race)
+BMI (BMI_currentwt)
+Education level (mm_ed_lvl)
+Employment status (mm_emp_stat)
+Annual Household Income (mm_fam_funds)
+
+```{r}
+table1 <- data_raw %>%
+  select(record_id, age_baseline_y, age_fu_y, BMI_currentwt, mm_male_fem, mm_gend, mm_ethnic, mm_race, mm_coutry_born, mm_ed_lvl, mm_emp_stat, mm_fam_funds)
+
+category_mappings <- list(
+  mm_male_fem = c(
+    "1" = "Male",
+    "2" = "Female",
+    "3" = "Decline to answer"
+    ),
+  mm_gend = c(
+    "1" = "Male",
+    "2" = "Female", 
+    "3" = "Transgender man/trans man/female-to-male (FTM)",
+    "4" = "Transgender woman/trans woman/man-to-female (MTF)",
+    "5" = "Genderqueer/ gender nonconforming neither exclusively male or female", 
+    "6" = "Decline to answer",
+    "7" = "Additional gender category"
+  ),
+  mm_ethnic = c(
+    "1" = "Hispanic or Latino",
+    "2" = "Not Hispanic or Latino",
+    "3" = "Prefer not to specify",
+    "4" = "Unknown"
+  ), 
+  mm_race = c(
+    "1" = "American Indian or Alaska Native",
+    "2" = "Asian",
+    "3" = "Native Hawaiian or other Pacific Islander",
+    "4" = "Black or African American",
+    "5" = "White or Caucasian",
+    "6" = "More than one race",
+    "7" = "Other",
+    "8" = "Prefer not to specify",
+    "9" = "Unknown"
+  ), 
+  mm_coutry_born = c(
+    "7" = "Argentina",
+  "12" = "The Bahamas", 
+  "21" = "Bolivia", 
+  "23" = "Botswana", 
+  "32" = "Canada", 
+  "33" = "Central African Republic", 
+  "36" = "China", 
+  "37" = "Colombia", 
+  "44" = "Cuba", 
+  "47" = "Denmark", 
+  "49" = "Dominica", 
+  "50" = "Dominican Republic", 
+  "62" = "France", 
+  "66" = "Germany", 
+  "67" = "Ghana", 
+  "70" = "Guatemala", 
+  "74" = "Haiti", 
+  "75" = "Honduras", 
+  "78" = "India", 
+  "80" = "Iran", 
+  "84" = "Italy", 
+  "85" = "Jamaica", 
+  "86" = "Japan", 
+  "92" = "Korea (South)", 
+  "107" = "Malaysia", 
+  "114" = "Mexico", 
+  "115" = "Micronesia, Federated States of", 
+  "116" = "Moldova", 
+  "117" = "Monaco", 
+  "119" = "Mongolia", 
+  "124" = "Morocco", 
+  "126" = "Nepal", 
+  "129" = "New Zealand", 
+  "133" = "Nigeria", 
+  "135" = "Pakistan", 
+  "139" = "Panama", 
+  "140" = "Philippines", 
+  "144" = "Poland", 
+  "147" = "Russia", 
+  "162" = "Saint Lucia", 
+  "170" = "South Africa", 
+  "173" = "Taiwan", 
+  "176" = "Thailand", 
+  "178" = "Trinidad and Tobago", 
+  "182" = "Turkey", 
+  "184" = "Ukraine", 
+  "185" = "United Kingdom", 
+  "190" = "United States", 
+  "191" = "Venezuela", 
+  "192" = "Vietnam"
+  ), 
+  mm_ed_lvl = c(
+    "1" = "12th grade or GED",
+    "2" = "Some college/Associates degree",
+    "3" = "College (includes multiple degrees",
+    "4" = "Non-doctoral graduate degree",
+    "5" = "Doctoral degree (M.D., J.D., Ph.D., etc.)"
+  ), 
+  mm_emp_stat = c(
+    "1" = "Full-time employment (35 hours a week or more year-round)",
+    "2" = "Part-time employment",
+    "3" = "Unemployed, actively seeking employment",
+    "4" = "Not employed, not seeking employment (student, retired, home-make, disabled, etc.)"
+  ), 
+  mm_fam_funds = c(
+    "1" = "Less than $25,000",
+    "2" = "$25,000-$49,999",
+    "3" = "$50,000-$79,999",
+    "4" = "$80,000-$130,000",
+    "5" = "Greater than $130,000"
+  )
+)
+
+transform_categorical_columns <- function(data, mappings) {
+  # Iterate through the mappings
+  for (col_name in names(mappings)) {
+    if (col_name %in% names(data)) {
+      # Replace the values in the column
+      data[[col_name]] <- ifelse(
+        as.character(data[[col_name]]) %in% names(mappings[[col_name]]),
+        mappings[[col_name]][as.character(data[[col_name]])],
+        data[[col_name]]
+      )
+    }
+  }
+  return(data)
+}
+
+table1 <- transform_categorical_columns(table1, category_mappings) #3205 obs
+
+table1 <- table1 %>%
+  filter(if_any(-c(record_id, BMI_currentwt), ~!is.na(.x))) %>% #1914 obs
+  filter(!record_id %in% c(3461, 3554, 3099)) #1911 obs
+
+table1_numeric <- table1 %>%
+  select(record_id, BMI_currentwt, age_baseline_y) %>%
+  summarize(mean_BMI = mean(BMI_currentwt, na.rm = TRUE), mean_age = mean(age_baseline_y, na.rm = TRUE), sd_BMI = sd(BMI_currentwt, na.rm = TRUE), sd_age = sd(age_baseline_y, na.rm = TRUE), frequency_BMI = sum(!is.na(BMI_currentwt)),frequency_age = sum(!is.na(age_baseline_y))) 
+
+summary_table <- data.frame(
+  Variable = c("BMI", "Age"),
+  Mean = c(table1_numeric$mean_BMI, table1_numeric$mean_age),
+  SD = c(table1_numeric$sd_BMI, table1_numeric$sd_age),
+  n = c(table1_numeric$frequency_BMI, table1_numeric$frequency_age)
+)
+
+```
+
+```{r}
+# List of categorical variables
+categorical_vars <- c(
+  "mm_male_fem", "mm_gend", "mm_ethnic", "mm_race",
+  "mm_coutry_born", "mm_ed_lvl", "mm_emp_stat", "mm_fam_funds"
+)
+
+# Function to calculate n(%) for categorical variables in a long format
+categorical_summary <- function(data, variables) {
+  result <- data.frame(Variable = character(), Category = character(), Count_Percent = character())
+  
+  for (var in variables) {
+    if (var %in% names(data)) {
+      # Calculate frequencies and percentages
+      freq_table <- table(data[[var]], useNA = "ifany")
+      percent_table <- prop.table(freq_table) * 100
+      
+      # Create a formatted table for each variable
+      summary_df <- data.frame(
+        Variable = var,  # Variable name
+        Category = names(freq_table),  # Category names
+        Count_Percent = paste0(freq_table, " (", round(percent_table, 1), "%)")
+      )
+      
+      # Bind the result
+      result <- rbind(result, summary_df)
+    }
+  }
+  
+  return(result)
+}
+
+# Function to create a collapsed format (with variable names as headers)
+categorical_summary_collapsed <- function(data, variables) {
+  # Initialize an empty list to store summaries
+  summary_list <- list()
+  
+  for (var in variables) {
+    if (var %in% names(data)) {
+      # Calculate frequencies and percentages
+      freq_table <- table(data[[var]], useNA = "ifany")
+      percent_table <- prop.table(freq_table) * 100
+      
+      # Create a formatted table for each variable
+      summary_df <- data.frame(
+        Variable = var,  # Variable name
+        Category = names(freq_table),  # Category names
+        Count_Percent = paste0(freq_table, " (", round(percent_table, 1), "%)")
+      )
+      
+      # Append the summary to the list
+      summary_list[[var]] <- summary_df
+    }
+  }
+  
+  # Combine all summaries into one dataframe
+  combined <- bind_rows(summary_list)
+  
+  # Format to include a blank row for the variable "header"
+  formatted_table <- combined %>%
+    group_by(Variable) %>%
+    mutate(Variable = ifelse(row_number() == 1, Variable, "")) %>%  # Keep the variable name only once
+    ungroup()
+  
+  return(formatted_table)
+}
+
+# Generate the summary in long format
+table1_categorical <- categorical_summary(table1, categorical_vars)
+
+# Generate the collapsed summary in long format
+final_catvar_table1 <- categorical_summary_collapsed(table1, categorical_vars)
+```
+
+```{r}
+catvar_name_mapping <- c(
+  "mm_male_fem" = "Sex",
+  "mm_gend" = "Gender",
+  "mm_ethnic" = "Ethnicity",
+  "mm_race" = "Race",
+  "mm_coutry_born" = "Country of Birth",
+  "mm_ed_lvl" = "Education Level",
+  "mm_emp_stat" = "Employment Status",
+  "mm_fam_funds" = "Household Annual Income"
+)
+
+kable(final_catvar_table1) %>%
+  kable_styling()
+  
+
+```
+
+
+Table 2 - Social Support
+Household Size (mm_numb_ppl_live)
+Marital Status (mm_mart_stat)
+BMI of partner ?
+Sallis scores (3)
+
+Table 3 - PFE
+MESA score
+Broken up into income categories? 
+
+
