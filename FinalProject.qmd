@@ -7,13 +7,15 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r}
+```{r echo=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = FALSE,tidy.opts=list(width.cutoff=30), tidy=TRUE)
+```
+
+```{r, warning=FALSE, echo=FALSE}
 library(tidyverse)
 library(formatR)
 library(knitr)
 library(kableExtra)
-
-knitr::opts_chunk$set(echo = TRUE,tidy.opts=list(width.cutoff=30), tidy=TRUE)
 ```
 
 ## Introduction
@@ -62,253 +64,111 @@ Prior preparation was conducted to produce the current datasets. The preparation
 
 General Information
 
-```{r}
+```{r, warning=FALSE, echo=FALSE}
 data_raw <- read.csv("~/Desktop/IWCR/envirpeer.csv")
 
 general_info <- data_raw %>%
   select(record_id:mm_med_7, mm_cond_10:mm_med_11, mm_cond_18, mm_med_18, mm_eatdisorder:mm_cur_n_med, mm_menop, wh_ht_m, BMI_currentwt, wh_ficm1, wh_cur_weight_select, wh_weight_2020_pounds, wh_weight_2020_kgs) %>%
   filter(!is.na(BMI_currentwt)) #dropped 383, n=2,822
 ```
-Table 1 - Participant Demos Age (age_baseline_y) Sex (mm_male_fem) Race/ethnicity (mm_ethnic, mm_race) BMI (BMI_currentwt) Education level (mm_ed_lvl) Employment status (mm_emp_stat) Annual Household Income (mm_fam_funds)
 
-```{r}
-table1 <- data_raw %>%
-  select(record_id, age_baseline_y, age_fu_y, BMI_currentwt, mm_male_fem, mm_gend, mm_ethnic, mm_race, mm_coutry_born, mm_ed_lvl, mm_emp_stat, mm_fam_funds)
+```{r, warning=FALSE, echo=FALSE}
+tableone_test <- data_raw %>%
+    select(record_id, age_baseline_y, age_fu_y, BMI_currentwt, mm_male_fem, mm_gend, mm_ethnic, mm_race, mm_ed_lvl, mm_emp_stat, mm_fam_funds)
 
-category_mappings <- list(
-  mm_male_fem = c(
-    "1" = "Male",
-    "2" = "Female",
-    "3" = "Decline to answer"
-    ),
-  mm_gend = c(
-    "1" = "Male",
-    "2" = "Female", 
-    "3" = "Transgender man/trans man/female-to-male (FTM)",
-    "4" = "Transgender woman/trans woman/man-to-female (MTF)",
-    "5" = "Genderqueer/ gender nonconforming neither exclusively male or female", 
-    "6" = "Decline to answer",
-    "7" = "Additional gender category"
-  ),
-  mm_ethnic = c(
-    "1" = "Hispanic or Latino",
-    "2" = "Not Hispanic or Latino",
-    "3" = "Prefer not to specify",
-    "4" = "Unknown"
-  ), 
-  mm_race = c(
-    "1" = "American Indian or Alaska Native",
-    "2" = "Asian",
-    "3" = "Native Hawaiian or other Pacific Islander",
-    "4" = "Black or African American",
-    "5" = "White or Caucasian",
-    "6" = "More than one race",
-    "7" = "Other",
-    "8" = "Prefer not to specify",
-    "9" = "Unknown"
-  ), 
-  mm_coutry_born = c(
-    "7" = "Argentina",
-  "12" = "The Bahamas", 
-  "21" = "Bolivia", 
-  "23" = "Botswana", 
-  "32" = "Canada", 
-  "33" = "Central African Republic", 
-  "36" = "China", 
-  "37" = "Colombia", 
-  "44" = "Cuba", 
-  "47" = "Denmark", 
-  "49" = "Dominica", 
-  "50" = "Dominican Republic", 
-  "62" = "France", 
-  "66" = "Germany", 
-  "67" = "Ghana", 
-  "70" = "Guatemala", 
-  "74" = "Haiti", 
-  "75" = "Honduras", 
-  "78" = "India", 
-  "80" = "Iran", 
-  "84" = "Italy", 
-  "85" = "Jamaica", 
-  "86" = "Japan", 
-  "92" = "Korea (South)", 
-  "107" = "Malaysia", 
-  "114" = "Mexico", 
-  "115" = "Micronesia, Federated States of", 
-  "116" = "Moldova", 
-  "117" = "Monaco", 
-  "119" = "Mongolia", 
-  "124" = "Morocco", 
-  "126" = "Nepal", 
-  "129" = "New Zealand", 
-  "133" = "Nigeria", 
-  "135" = "Pakistan", 
-  "139" = "Panama", 
-  "140" = "Philippines", 
-  "144" = "Poland", 
-  "147" = "Russia", 
-  "162" = "Saint Lucia", 
-  "170" = "South Africa", 
-  "173" = "Taiwan", 
-  "176" = "Thailand", 
-  "178" = "Trinidad and Tobago", 
-  "182" = "Turkey", 
-  "184" = "Ukraine", 
-  "185" = "United Kingdom", 
-  "190" = "United States", 
-  "191" = "Venezuela", 
-  "192" = "Vietnam"
-  ), 
-  mm_ed_lvl = c(
-    "1" = "12th grade or GED",
-    "2" = "Some college/Associates degree",
-    "3" = "College (includes multiple degrees",
-    "4" = "Non-doctoral graduate degree",
-    "5" = "Doctoral degree (M.D., J.D., Ph.D., etc.)"
-  ), 
-  mm_emp_stat = c(
-    "1" = "Full-time employment (35 hours a week or more year-round)",
-    "2" = "Part-time employment",
-    "3" = "Unemployed, actively seeking employment",
-    "4" = "Not employed, not seeking employment (student, retired, home-make, disabled, etc.)"
-  ), 
-  mm_fam_funds = c(
-    "1" = "Less than $25,000",
-    "2" = "$25,000-$49,999",
-    "3" = "$50,000-$79,999",
-    "4" = "$80,000-$130,000",
-    "5" = "Greater than $130,000"
-  )
-)
+tableone_test <- tableone_test %>%
+    rename("Sex"="mm_male_fem",
+           "Gender"="mm_gend",
+           "Ethnicity"="mm_ethnic",
+           "Race"="mm_race" ,
+           "Education Level"="mm_ed_lvl",
+           "Employment Status"="mm_emp_stat",
+           "Household Annual Income"="mm_fam_funds")
 
-transform_categorical_columns <- function(data, mappings) {
-  # Iterate through the mappings
-  for (col_name in names(mappings)) {
-    if (col_name %in% names(data)) {
-      # Replace the values in the column
-      data[[col_name]] <- ifelse(
-        as.character(data[[col_name]]) %in% names(mappings[[col_name]]),
-        mappings[[col_name]][as.character(data[[col_name]])],
-        data[[col_name]]
-      )
-    }
-  }
-  return(data)
-}
+tableone_test <- tableone_test %>%
+  mutate(Sex = case_when(Sex == 1 ~ "Male",
+                         Sex == 2 ~ "Female",
+                         Sex == 3 ~ "Decline to answer"),
+         Gender = case_when(Gender == 1 ~ "Male",
+                            Gender == 2 ~ "Female", 
+                            TRUE ~ "Other"),
+         Ethnicity = case_when(Ethnicity == 1 ~ "Hispanic or Latino",
+                               Ethnicity == 2 ~ "Not Hispanic or Latino",
+                               Ethnicity == 3 ~ "Prefer not to specify",
+                               Ethnicity == 4 ~ "Unknown"),
+         Race = case_when(Race == 1 ~ "American Indian or Alaska Native",
+                          Race == 2 ~ "Asian",
+                          Race == 3 ~ "Native Hawaiian or other Pacific Islander",
+                          Race == 4 ~ "Black or African American",
+                          Race == 5 ~ "White or Caucasian",
+                          Race == 6 ~ "More than one race",
+                          Race == 7 ~ "Other",
+                          Race == 8 ~ "Prefer not to specify",
+                          Race == 9 ~ "Unknown"),
+        `Education Level` = case_when(`Education Level` == 1 ~ "12th grade or GED",
+                                      `Education Level` == 2 ~ "Some college/Associates degree",
+                                      `Education Level` == 3 ~ "College (includes multiple degrees)",
+                                      `Education Level` == 4 ~ "Non-doctoral graduate degree",
+                                      `Education Level` == 5 ~ "Doctoral degree (M.D., J.D., Ph.D., etc.)"),
+        `Employment Status` = case_when(`Employment Status` == 1 ~ "Full-time employment (35 hours a week or more year-round)",
+                                        `Employment Status` == 2 ~ "Part-time employment",
+                                        `Employment Status` == 3 ~ "Unemployed, actively seeking employment",
+                                        `Employment Status` == 4 ~ "Not employed, not seeking employment (student, retired, home-make, disabled, etc.)"),
+        `Household Annual Income` = case_when(`Household Annual Income` == 1 ~ "Less than $25,000",
+                                              `Household Annual Income` == 2 ~ "$25,000-$49,999",
+                                              `Household Annual Income` == 3 ~ "$50,000-$79,999",
+                                              `Household Annual Income` == 4 ~ "$80,000-$130,000",
+                                              `Household Annual Income` == 5 ~ "Greater than $130,000")
+         )
 
-table1 <- transform_categorical_columns(table1, category_mappings) #3205 obs
+tableone_test <- tableone_test %>%
+   mutate(
+     Sex = fct_relevel(Sex, "Female", "Male", "Decline to answer", "NA"), 
+         Race = fct_relevel(Race, "American Indian or Alaska Native", "Asian", "Black or African American", "Native Hawaiian or other Pacific Islander", "White or Caucasian", "More than one race", "Other", "Unknown", "Prefer not to specify"), 
+         `Education Level` = fct_relevel(`Education Level`, "12th grade or GED", "Some college/Associates degree", "College (includes multiple degrees)", "Non-doctoral graduate degree", "Doctoral degree (M.D., J.D., Ph.D., etc.)", "NA"),
+        `Employment Status` = fct_relevel(`Employment Status`, "Unemployed, actively seeking employment", "Part-time employment", "Full-time employment (35 hours a week or more year-round)", "Not employed, not seeking employment (student, retired, home-make, disabled, etc.)", "NA"),
+        `Household Annual Income` = fct_relevel(`Household Annual Income`, "Less than $25,000", "$25,000-$49,999", "$50,000-$79,999", "$80,000-$130,000", "Greater than $130,000", "NA"))
 
-table1 <- table1 %>%
-  filter(if_any(-c(record_id, BMI_currentwt), ~!is.na(.x))) %>% #1914 obs
-  filter(!record_id %in% c(3461, 3554, 3099)) #1911 obs
+t1summary <- tableone_test %>%
+  pivot_longer(
+    cols = c(Sex, Gender, Ethnicity, Race, `Education Level`, `Employment Status`, `Household Annual Income`),
+    names_to = "Variable",
+    values_to = "Category"
+  ) %>%
+  group_by(Variable, Category) %>%
+  summarize(
+    n = n(),
+    percent = round(n()/nrow(tableone_test) * 100, 2)
+  ) %>%
+  mutate(Variable = fct_relevel(Variable, "Sex", "Gender", "Race", "Ethnicity", "Education Level", "Employment Status", "Household Annual Income" )) %>%
+  arrange(Variable, Category) %>%
+  # Replace repeated Variable names with blanks
+  mutate(Variable = ifelse(duplicated(Variable), "", as.character(Variable)))
 
-table1_numeric <- table1 %>%
+ParticipantDemographics <- kable(t1summary, format = "latex", booktabs = TRUE) %>%
+  kable_classic() %>%
+  kable_styling(latex_options = "scale_down")
+
+ParticipantDemographics
+```
+
+```{r, warning=FALSE, echo=FALSE}
+tableonecont <- tableone_test %>%
+  filter(!record_id %in% c(3461, 3554, 3099)) %>% 
   select(record_id, BMI_currentwt, age_baseline_y) %>%
   summarize(mean_BMI = mean(BMI_currentwt, na.rm = TRUE), mean_age = mean(age_baseline_y, na.rm = TRUE), sd_BMI = sd(BMI_currentwt, na.rm = TRUE), sd_age = sd(age_baseline_y, na.rm = TRUE), frequency_BMI = sum(!is.na(BMI_currentwt)),frequency_age = sum(!is.na(age_baseline_y))) 
 
-final_contvar_table1 <- data.frame(
+ParticipantDemos_contiuous <- data.frame(
   Variable = c("BMI", "Age"),
-  Mean = c(table1_numeric$mean_BMI, table1_numeric$mean_age),
-  SD = c(table1_numeric$sd_BMI, table1_numeric$sd_age),
-  n = c(table1_numeric$frequency_BMI, table1_numeric$frequency_age)
+  Mean = c(tableonecont$mean_BMI, tableonecont$mean_age),
+  SD = c(tableonecont$sd_BMI, tableonecont$sd_age),
+  n = c(tableonecont$frequency_BMI, tableonecont$frequency_age)
 )
-
-```
-
-```{r}
-# List of categorical variables
-categorical_vars <- c(
-  "mm_male_fem", "mm_gend", "mm_ethnic", "mm_race",
-  "mm_coutry_born", "mm_ed_lvl", "mm_emp_stat", "mm_fam_funds"
-)
-
-# Function to calculate n(%) for categorical variables in a long format
-categorical_summary <- function(data, variables) {
-  result <- data.frame(Variable = character(), Category = character(), n_percent = character())
-  
-  for (var in variables) {
-    if (var %in% names(data)) {
-      # Calculate frequencies and percentages
-      freq_table <- table(data[[var]], useNA = "ifany")
-      percent_table <- prop.table(freq_table) * 100
-      
-      # Create a formatted table for each variable
-      summary_df <- data.frame(
-        Variable = var,  # Variable name
-        Category = names(freq_table),  # Category names
-        n_percent = paste0(freq_table, " (", round(percent_table, 1), "%)")
-      )
-      
-      # Bind the result
-      result <- rbind(result, summary_df)
-    }
-  }
-  
-  return(result)
-}
-
-# Function to create a collapsed format (with variable names as headers)
-categorical_summary_collapsed <- function(data, variables) {
-  # Initialize an empty list to store summaries
-  summary_list <- list()
-  
-  for (var in variables) {
-    if (var %in% names(data)) {
-      # Calculate frequencies and percentages
-      freq_table <- table(data[[var]], useNA = "ifany")
-      percent_table <- prop.table(freq_table) * 100
-      
-      # Create a formatted table for each variable
-      summary_df <- data.frame(
-        Variable = var,  # Variable name
-        Category = names(freq_table),  # Category names
-        n_percent = paste0(freq_table, " (", round(percent_table, 1), "%)")
-      )
-      
-      # Append the summary to the list
-      summary_list[[var]] <- summary_df
-    }
-  }
-  
-  # Combine all summaries into one dataframe
-  combined <- bind_rows(summary_list)
-  
-  # Format to include a blank row for the variable "header"
-  formatted_table <- combined %>%
-    group_by(Variable) %>%
-    mutate(Variable = ifelse(row_number() == 1, Variable, "")) %>%  # Keep the variable name only once
-    ungroup()
-  
-  return(formatted_table)
-}
-
-# Generate the summary in long format
-table1_categorical <- categorical_summary(table1, categorical_vars)
-
-# Generate the collapsed summary in long format
-final_catvar_table1 <- categorical_summary_collapsed(table1, categorical_vars)
-```
-
-```{r}
-final_catvar_table1 <- final_catvar_table1 %>%
-  mutate(Variable = recode(Variable, 
-                           "mm_male_fem" = "Sex",
-                           "mm_gend" = "Gender",
-                           "mm_ethnic" = "Ethnicity",
-                           "mm_race" = "Race",
-                           "mm_coutry_born" = "Country of Birth",
-                           "mm_ed_lvl" = "Education Level",
-                           "mm_emp_stat" = "Employment Status",
-                           "mm_fam_funds" = "Household Annual Income"))
-
-kable(final_catvar_table1) %>%
-  kable_styling(bootstrap_options = c("striped", "condensed"))
-  
 ```
 
 Social Support
 
-```{r}
+```{r, warning=FALSE, echo=FALSE}
 social_support <- data_raw %>%
   select(record_id, me_unheathy:sallis_exercise) %>%
   drop_na() #dropped 1,849, n=1,356
@@ -316,6 +176,154 @@ social_support <- data_raw %>%
 ss_final <- left_join(social_support, general_info,
                       join_by(record_id == record_id))
 
+table2 <- ss_final %>%
+  rename(
+    "Marital Status" = "mm_mart_stat",
+    "Education Level" = "mm_ed_lvl",
+    "Sex"="mm_male_fem",
+    "Gender"="mm_gend",
+    "Ethnicity"="mm_ethnic",
+    "Race"="mm_race",
+    "Employment Status"="mm_emp_stat",
+    "Household Annual Income"="mm_fam_funds",
+    "BMI" = "BMI_currentwt",
+    "Age" = "age_baseline_y",
+    "People in Household" = "mm_numb_ppl_live",
+    "Diet Encouragement Score" = "sallis_diet_encourage",
+    "Diet Discouragement Score" = "sallis_diet_discourage",
+    "Exercise Encouragement Score" = "sallis_exercise"
+  ) %>%
+  mutate(Sex = case_when(Sex == 1 ~ "Male",
+                         Sex == 2 ~ "Female",
+                         Sex == 3 ~ "Decline to answer"),
+         Gender = case_when(Gender == 1 ~ "Male",
+                            Gender == 2 ~ "Female", 
+                            TRUE ~ "Other"),
+         Ethnicity = case_when(Ethnicity == 1 ~ "Hispanic or Latino",
+                               Ethnicity == 2 ~ "Not Hispanic or Latino",
+                               Ethnicity == 3 ~ "Prefer not to specify",
+                               Ethnicity == 4 ~ "Unknown"),
+         Race = case_when(Race == 1 ~ "American Indian or Alaska Native",
+                          Race == 2 ~ "Asian",
+                          Race == 3 ~ "Native Hawaiian or other Pacific Islander",
+                          Race == 4 ~ "Black or African American",
+                          Race == 5 ~ "White or Caucasian",
+                          Race == 6 ~ "More than one race",
+                          Race == 7 ~ "Other",
+                          Race == 8 ~ "Prefer not to specify",
+                          Race == 9 ~ "Unknown"),
+        `Education Level` = case_when(`Education Level` == 1 ~ "12th grade or GED",
+                                      `Education Level` == 2 ~ "Some college/Associates degree",
+                                      `Education Level` == 3 ~ "College (includes multiple degrees)",
+                                      `Education Level` == 4 ~ "Non-doctoral graduate degree",
+                                      `Education Level` == 5 ~ "Doctoral degree (M.D., J.D., Ph.D., etc.)"),
+        `Employment Status` = case_when(`Employment Status` == 1 ~ "Full-time employment (35 hours a week or more year-round)",
+                                        `Employment Status` == 2 ~ "Part-time employment",
+                                        `Employment Status` == 3 ~ "Unemployed, actively seeking employment",
+                                        `Employment Status` == 4 ~ "Not employed, not seeking employment (student, retired, home-make, disabled, etc.)"),
+        `Household Annual Income` = case_when(`Household Annual Income` == 1 ~ "Less than $25,000",
+                                              `Household Annual Income` == 2 ~ "$25,000-$49,999",
+                                              `Household Annual Income` == 3 ~ "$50,000-$79,999",
+                                              `Household Annual Income` == 4 ~ "$80,000-$130,000",
+                                              `Household Annual Income` == 5 ~ "Greater than $130,000"),
+        `Marital Status` = case_when(`Marital Status` == 1 ~ "Married",
+                                     `Marital Status` == 2 ~ "Divorced",
+                                     `Marital Status` == 3 ~ "Single, never married",
+                                     `Marital Status` == 4 ~ "Widowed",
+                                     `Marital Status` == 5 ~ "Separated",
+                                     `Marital Status` == 6 ~ "Not married, but living with partner"
+                                     ),
+        mm_spouse_yn = case_when(mm_spouse_yn == 1 ~ "Yes",
+                                 mm_spouse_yn == 0 ~ "No")
+         )
+```
+
+```{r}
+#creating tertiles for scores Diet Encourage, Diet Discourage, and Exercise Encourage
+t2summary <- table2 %>%
+  mutate(
+    dietDIStert = cut(`Diet Discouragement Score`, 
+                      breaks = quantile(`Diet Discouragement Score`, probs = 0:3/3), 
+                      labels = c("Low", "Medium", "High"), 
+                      include.lowest = TRUE),
+    dietENCtert = cut(`Diet Encouragement Score`, 
+                      breaks = quantile(`Diet Encouragement Score`, probs = 0:3/3), 
+                      labels = c("Low", "Medium", "High"), 
+                      include.lowest = TRUE),
+    exerciseENCtert = cut(`Exercise Encouragement Score`, 
+                          breaks = quantile(`Exercise Encouragement Score`, probs = 0:3/3), 
+                          labels = c("Low", "Medium", "High"), 
+                          include.lowest = TRUE),
+    BMI_groups = cut(BMI, 
+                     breaks = c(0, 18.5, 24.9, 29.9, 34.9, 39.9, 100),
+                     labels = c("Underweight", "Normal weight", "Overweight", "Obesity", "Obesity II", "Obesity III"),
+                     include.lowest = TRUE),
+    Age_groups = cut(Age,
+                     breaks = c(0, 20, 30, 40, 50, 60, 70, 80, 90, 100),
+                     labels = c("Under 20", "20-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89", "90-99"),
+                     include.lowest = TRUE)
+  )
+
+t2summary <- t2summary %>%
+  select(record_id,Age_groups,Sex,Race,Ethnicity,`Education Level`,`Employment Status`,`Household Annual Income`,Gender,`Marital Status`,mm_spouse_yn,`People in Household`,dietDIStert,dietENCtert,exerciseENCtert, BMI_groups)
+
+t2summary$`People in Household` <- as.factor(t2summary$`People in Household`)
+
+t2summary_long <- t2summary %>%
+  pivot_longer(
+    cols = c(Age_groups,Sex,Race,Ethnicity,`Education Level`,`Employment Status`,`Household Annual Income`,BMI_groups,Gender,`Marital Status`,mm_spouse_yn,`People in Household`, dietDIStert,dietENCtert,exerciseENCtert),
+    names_to = "Variable",
+    values_to = "Category"
+  )
+
+t2summary_sums <- t2summary_long %>%
+  group_by(Variable, Category) %>%
+  summarize(
+    n = n(),
+    percent = round(n()/nrow(t2summary) * 100, 2)
+  )
+
+BMIbyScores_long <- t2summary_long %>%
+  filter(Variable %in% c("BMI_groups", "dietDIStert", "dietENCtert", "exerciseENCtert"))
+
+BMIbyScores_wide <- BMIbyScores_long %>%
+  pivot_wider(names_from = Variable, values_from = Category)
+
+BMIbyScores_wide <- BMIbyScores_wide %>%
+   mutate(dietDIStert = fct_relevel(dietDIStert, "Low", "Medium", "High"),
+          dietENCtert = fct_relevel(dietENCtert, "Low", "Medium", "High"),
+          exerciseENCtert = fct_relevel(dietDIStert, "Low", "Medium", "High")
+   )
+
+BMIbyScores_summaryDE <- BMIbyScores_wide %>%
+   group_by(BMI_groups, dietENCtert) %>%
+  summarize(
+    n = n(),
+    percent = round(n()/nrow(BMIbyScores_wide) * 100, 2))
+
+BMIbyDE <- kable(BMIbyScores_summaryDE, format = "latex", booktabs = TRUE) %>%
+  kable_classic() %>%
+  kable_styling(latex_options = "scale_down")
+
+BMIbyScores_summaryDD <- BMIbyScores_wide %>%
+   group_by(BMI_groups, dietDIStert) %>%
+  summarize(
+    n = n(),
+    percent = round(n()/nrow(BMIbyScores_wide) * 100, 2))
+
+BMIbyDD <- kable(BMIbyScores_summaryDD, format = "latex", booktabs = TRUE) %>%
+  kable_classic() %>%
+  kable_styling(latex_options = "scale_down")
+
+BMIbyScores_summaryEE <- BMIbyScores_wide %>%
+   group_by(BMI_groups, exerciseENCtert) %>%
+  summarize(
+    n = n(),
+    percent = round(n()/nrow(BMIbyScores_wide) * 100, 2))
+
+BMIbyEE <- kable(BMIbyScores_summaryEE, format = "latex", booktabs = TRUE) %>%
+  kable_classic() %>%
+  kable_styling(latex_options = "scale_down")
 
 # corr1 <- cor.test(ss_final$sallis_diet_discourage , ss_final$BMI_currentwt , method="spearman") 
 # corr1 #(p=0.064, rho=0.052) no/weak correlation
@@ -361,8 +369,18 @@ fde_final <- left_join(my_fd_env, general_info,
 
 According to Spearman's correlation test, there is a statistically significant (p=6.243e-08) but weak (-0.15), negative correlation between PFE and BMI. The linear model using BMI as an outcome predicts a 0.33 unit decrease in BMI with every unit increase in the MESA Food Environment scale. *I don't think these are enough though, and I'm not sure what the next move is.*
 
-
-
 Table 2 - Social Support Household Size (mm_numb_ppl_live) Marital Status (mm_mart_stat) BMI of partner ? Sallis scores (3)
 
 Table 3 - PFE MESA score Broken up into income categories?
+
+## Results
+
+Our final sample included 1,375 participants for analysis of PFE and 1,356 participants for SS. The combined participants had a mean BMI of 33.21 kg/m^2^ +/- 8.37 (SD), n=2,819, and average age of 51.85 years +/- 14.24 (SD), n=1,698. Participant characteristics can be found in Table 1. Of note, the participants primarily identified as female and white/Caucasian, comprising of 84.6% and 72.8% of the total sample, respectively.
+
+
+```{r}
+ParticipantDemographics
+BMIbyEE
+BMIbyDD
+BMIbyDE
+```
