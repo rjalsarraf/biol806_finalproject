@@ -494,3 +494,6 @@ Weir, C.B. & Jan, A., 2023. BMI Classification Percentile And Cut Off Points. St
 Wieland, M.L. et al., 2020. Association of social network factors with weight status and weight loss intentions among hispanic adults. Journal of Behavioral Medicine, 43(2), pp.155–165.
 
 Winston, G.J. et al., 2015. Social network characteristics associated with weight loss among black and hispanic adults. Obesity, 23(8), pp.1570–1576.
+
+## GitHub Repository Link:
+https://github.com/rjalsarraf/biol806_finalproject
