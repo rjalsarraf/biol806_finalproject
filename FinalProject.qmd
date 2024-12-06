@@ -135,7 +135,8 @@ t1summary <- tableone_test %>%
   # Replace repeated Variable names with blanks
   mutate(Variable = ifelse(duplicated(Variable), "", as.character(Variable)))
 
-ParticipantDemographics <- kable(t1summary, format = "latex", booktabs = TRUE) %>%
+ParticipantDemographics <- kable(t1summary, format = "latex", booktabs = TRUE,
+                                 caption = "Table 1 - Participant Demographics") %>%
   kable_classic() %>%
   kable_styling(latex_options = "scale_down")
 ```
@@ -343,19 +344,19 @@ BMIbyScores_summaryEE <- BMIbyScores_wide %>%
 
 ```{r BMIbyScoresTables, echo=FALSE, warning=FALSE}
 BMIbyDE_table <- kbl(BMIbyScores_summaryDE, format = "latex", booktabs = TRUE,
-                       caption = "Diet Encouragement Subscore",
+                       caption = "Table 2.1 - Diet Encouragement Subscore",
                        align = "c") %>%
   kable_classic() %>%
   kable_styling(latex_options = "scale_down")
 
 BMIbyDD_table <- kable(BMIbyScores_summaryDD, format = "latex", booktabs = TRUE,
-                       caption = "Diet Discouragement Subscore",
+                       caption = "Table 2.2 - Diet Discouragement Subscore",
                        align = "c") %>%
   kable_classic() %>%
   kable_styling(latex_options = "scale_down")
 
 BMIbyEE_table <- kable(BMIbyScores_summaryEE, format = "latex", booktabs = TRUE,
-                       caption = "Exercise Encouragement Subscore",
+                       caption = "Table 2.3 - Exercise Encouragement Subscore",
                        align = "c") %>%
   kable_classic() %>%
   kable_styling(latex_options = "scale_down")
@@ -408,17 +409,12 @@ EE_model3 <- lm(`Exercise Encouragement Score`~BMI + Age + Sex + `Education Leve
 ```
 
 ## Results
-
-Our final sample included 1,248 participants. The combined participants had a mean BMI of 33.13 kg/m^2^ +/- 8.40 (SD), and an average age of 51.79 years +/- 14.26 (SD). Participant characteristics can be found in Table 1. Of note, the participants primarily identified as female and white/Caucasian, comprising of 83.4% and 76.8% of the total sample, respectively.
-
 ```{r, echo=FALSE, warning=FALSE}
 ParticipantDemographics
 ```
+Our final sample included 1,248 participants. The combined participants had a mean BMI of 33.13 kg/m^2^ +/- 8.40 (SD), and an average age of 51.79 years +/- 14.26 (SD). Participant characteristics can be found in Table 1. Of note, the participants primarily identified as female and white/Caucasian, comprising of 83.4% and 76.8% of the total sample, respectively.
 
-#### Social Support
-
-Three subscores were used to assess Social Support: Diet Encouragement, Diet Discouragement, and Exercise Encouragement. The tables below show the breakdown of scores by BMI category.
-
+Three subscores were used to assess Social Support: Diet Encouragement, Diet Discouragement, and Exercise Encouragement. Tables 2.1-2.3 show the breakdown of each score by BMI category.
 ```{r, echo=FALSE, warning=FALSE}
 BMIbyDE_table
 BMIbyDD_table
