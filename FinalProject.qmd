@@ -1,14 +1,17 @@
 ---
-title: "Correlations between Social Support, Perceived Food Environment, and Weight Status"
+title: "Correlations between Social Support and Weight Status"
 author: "Rawan AlSarraf"
 format: pdf
 editor: visual
 editor_options: 
   chunk_output_type: console
+header-includes:
+  - \usepackage{caption}
+  - \captionsetup[table]{labelformat=empty}
 ---
 
 ```{r echo=FALSE, warning=FALSE}
-knitr::opts_chunk$set(echo = FALSE,tidy.opts=list(width.cutoff=30), tidy=TRUE)
+knitr::opts_chunk$set(echo = FALSE,tidy.opts=list(width.cutoff=30), tidy=TRUE, message=FALSE)
 ```
 
 ```{r, warning=FALSE, echo=FALSE}
@@ -22,9 +25,7 @@ library(kableExtra)
 
 Obesity is a multifactorial disease, characterized by high weight status and excessive adipose tissue. People affected by obesity have a higher risk of developing a multitude of comorbidities including Type 2 Diabetes Mellitus, cardiovascular disease, cancer, and mortality (Valenzuela 2023). Approximately 40% of the global population has overweight or obesity (Cani 2023), and presently within the United States, the Centers for Disease Control and Prevention reports that at least 20% of adults live with obesity (CDC).
 
-Socioecological models of health posit that there are multiple layers of influence, upstream from one’s personal behaviors, that guide one’s decisions and actions (Ayala-Marín 2020). Factors such as socioeconomic status, physical environment, education level, and social relationships are established influencers of one’s weight status (Glonti 2016, Wang 2007, Mackenbach 2019). While correlations have been recognized between nonbiological determinants (NBD) and weight status, more research is necessary to understand the directionality of these correlations (Javed et al 2021).
-
-#### Social Support
+Socioecological models of health posit that there are multiple layers of influence, upstream from one’s personal behaviors, that guide one’s decisions and actions (Ayala-Marín 2020). Factors such as socioeconomic status, physical environment, education level, and social relationships are established influencers of one’s weight status (Glonti 2016, Mackenbach 2019, Wang 2007). While correlations have been recognized between nonbiological determinants (NBD) and weight status, more research is necessary to understand the directionality of these correlations (Javed 2021).
 
 Social support (SS) is known to correlate with weight status throughout multiple cohort studies, although yielding mixed results. The lack of consensus within the results can be attributed to multiple factors: firstly, the term "social support" does not have an agreed-upon definition, and can quantify different aspects of social interactions depending on the study. A seminal study in the Framingham Heart Study found that an individual’s risk of obesity increases by 45% if a member of their social circle had obesity (Christakis 2007). Interestingly, the increased risk of obesity remained significant through 3 degrees of separation. In this study, the variable in question is a person's social network, or the distance between a person and a member of their network, rather than the quality of the relationship. Using a similar metric, Wieland et al. 2020 found that self-identified Hispanic/Latino participants with obesity had more network members with obesity compared to participants without obesity (Wieland 2020).
 
@@ -32,39 +33,27 @@ In addition to the number and proximity of social networks, the structure and fu
 
 Social support seems to interact with different racial, ethnic, sex, or gender cohorts differently. For example, Lee et al. 2013 found an interesting dimorphism concerning communication. BMI was strongly associated with network size and density compared to communication frequency in men, whereas communication and meeting frequency were significantly associated with BMI in women (Lee 2013). This discrepancy is observed across populations, as well. A cross-sectional study in the Latino Men’s Health Initiative found that increased perceived social support was associated with an increased odds of having overweight or obesity status (Craven 2018). Conversely, a study in the Canadian Longitudinal Study on Aging found that the odds of general obesity were higher in women with the least amount of social support compared to those with the highest amount of support (Hosseini 2021). The differences observed between populations call for more research to further understand how certain populations interact with social support.
 
-#### Perceived Food Environment
-
-Perceived food environment (PFE) is not strictly defined, however understanding how one’s interactions with their environment correlates with their food behavior, and ultimately, weight status, has been of interest recently (Gao 2022, Zhao 2020, Story 2008, Mackenbach 2019). The importance of capturing an individual’s lived experience is due to the fact that certain aspects of food behavior, such as cultural norms or food preferences, are not quantifiable solely by appraising one’s objective food environment, often defined by parameters of availability, accessibility, and affordability (Gao 2022, Inglis 2007). One study found that the perceived price of fruits and vegetables was significantly associated with an individual’s BMI (Alber 2018). Additionally, there was a significant association between the perceived quality of fruits and vegetables and fruit and vegetable intake (Abler 2018). Participants of the Multi-Ethnic Study of Atherosclerosis (MESA) perceiving high access to healthy foods had higher diet quality over a 10 year period, compared to those with a negative perception of their food environment. Measures of perceived availability and affordability of fresh produce and local, healthy food options were predictive of fruit consumption in a study including participants of the Socioeconomic Status and Activity in Women Study (Inglis 2007). When taking into account education level, the same measures were additionally predictive of vegetable consumption. Interestingly, Ingles et al. concluded that by focusing on PFE, we may be able to reduce differences in women’s diets caused by socioeconomic status.
-
-Perception of food environment is not limited to accessibility and pricing of food. The risk of obesity and overweight increased with lowered perceived safety from traffic and crime in participants of a community-based physical activity intervention study (Boehmer 2006). One study found that the perceived availability of fast food shops and convenience stores was significantly associated with moderate-to-high intake of high-fat foods and soft drinks in adolescents in Hong Kong (Ho 2010). Another study sought to understand the relationship between price, availability, marketing, and product placement, and fruit and vegetable consumption to find that marketing was the only measure associated with vegetable intake (Zhao 2020). Participants of the Chicago Healthy Eating Environments and Resources Study had higher vegetable intake when reported awareness of “healthy food signs” in their grocery store (Zhao 2020).
-
 #### Objective
 
-The objective of this study is to determine the relative contributions of social support and the food environment to weight status, and if these relationships differ according to sex and racial/ethnic backgrounds.
+The objective of this study is to determine the relative contribution of social support to weight status, and if this relationship differs according to sex and racial backgrounds.
 
 ## Methods
 
 #### International Weight Control Registry (IWCR)
 
-International Weight Control Registry is a web-based, longitudinal study seeking to identify weight management strategies in an international population (Roberts 2022). Eligibility criteria include adults over 18 years old in participating countries having attempted weight loss, or are interested in attempting weight loss. Participants are directed to an online, secure platform to complete a comprehensive set of questionnaires encompassing behavioral, environmental, psychosocial, and biological domains relevant to obesity and weight management. Measures are chosen within the framework of the Accumulating Data to Optimally Predict Obesity Treatment (ADOPT) initiative.
+International Weight Control Registry is a web-based, longitudinal study seeking to identify weight management strategies in an international population (Roberts 2022). Eligibility criteria include adults over 18 years old in participating countries having attempted weight loss, or are interested in attempting weight loss. Participants are directed to an online, secure platform to complete a comprehensive set of questionnaires encompassing behavioral, environmental, psychosocial, and biological domains relevant to obesity and weight management. Measures are chosen within the framework of the Accumulating Data to Optimally Predict Obesity Treatment (ADOPT) initiative. For the purposes of this study, 3 questionnaires will be utilized measuring social support, weight history, and general health and demographic information. Additionally, this study will solely utilize data from a subset of the study population within the United States.
 
-For the purposes of this study, four questionnaires will be utilized measuring social support, perceived food environment, weight history, and general health and demographic information. Additionally, this study will solely utilize data from a subset of the study population within the United States.
-
-To measure PFE, three questions were derived to quantify the availability and quality of fresh fruits and vegetables, and the availability of low-fat food products (Gao 2022, OG MESA). Participants were asked to score the extent to which they agreed with the statements using a 5-point Likert scale, with 1 being "strongly agree" and 5 being "strongly disagree". A higher summed score indicates higher perceived food availability. As for SS, the Sallis Social Support for Diet and Exercise scale was utilized, deriving three scores quantifying Diet Encouragement, Diet Discouragement, and Exercise Participation. Participants were asked to scale the frequency of the statements from 1-6, with 1 being "none", 5 being "very often", and 6 being "does not apply". Higher scores indicate greater support in the Diet Encouragement and Exercise Participation subscales, whereas a higher score in the Diet Discouragement subscale indicates more discouragement from family and friends.
-
-#### Statistical Methods
-
-The primary goal is to determine the relative contributions of social support and the food environment to weight status, then determine if this relationship differs according to racial and ethnic background.
-
-*There are a couple ways I'm thinking of going about this. I could use weight or BMI as a continuous variable and survey scores as continuous as well, then use a linear regression. I could also categorize BMI (let's say 3 categories for now; underweight, normal, overweight), then categorize the scores (e.g. high social support, medium, low) and do a logistic/binomial regression. None of my scores (mesa_foodenv_score, sallis_diet_discourage, sallis_diet_encourage, sallis_exercise) are normally distributed, though.*
+The Sallis Social Support for Diet and Exercise scale was utilized to derive three scores quantifying Diet Encouragement, Diet Discouragement, and Exercise Participation as measures of SS. Participants were asked to scale the frequency of the statements from 1-6, with 1 being "none", 5 being "very often", and 6 being "does not apply". Higher scores indicate greater support in the Diet Encouragement and Exercise Participation subscales, whereas a higher score in the Diet Discouragement subscale indicates more discouragement from family and friends.
 
 #### Data preparation
 
-Prior preparation was conducted to produce the current datasets. The preparation included removing records with implausible height, weight, BMI, and age (Koebnick 2012, Pyrkov 2021). Additional records were removed based on an executive committee decision, due to a possible website breach. Next, the individual surveys (Social Support, My Food Environment, Weight History, and More About Me) were separated in order to remove participants with incomplete survey responses from the analysis. Of the initial 3,205 records, 1,356 participants completed Social Support, and 1,375 participants completed My Food Environment.
+Prior preparation was conducted to produce the current datasets. The preparation included removing records with implausible height, weight, BMI, and age (Koebnick 2012, Pyrkov 2021). Additional records were removed based on an executive committee decision, due to a possible website breach. Next, the individual surveys (Social Support, Weight History, and More About Me) were separated in order to remove participants with incomplete survey responses from the analysis. Of the initial 3,205 records, 1,356 participants completed Social Support. Additional participants were removed if BMI or age were not recorded. Our final sample size included 1,248 participants.
 
-General Information
+#### Statistical Methods
 
-```{r, warning=FALSE, echo=FALSE}
+The three subscores for SS were categorized into Low, Medium, or High by dividing the maximum recorded score by 3. BMI was categorized into 6 groups (Underweight, Normal, Overweight, Obesity, Obesity II, and Obesity III), according to classifications defined by the NIH (Weir 2023). Linear models were used to determine the relationship between the three subscores and BMI. Covariates included age, sex, race, number of people in the household, education level, household annual income, and marital status. The assumptions of linear regressions (linearity, normality of errors, homoscedasticity, and influence of outliers) were validated with diagnostic plots prior to fitting the models.
+
+```{r GeneralInfo_STARTHERE, warning=FALSE, echo=FALSE}
 data_raw <- read.csv("~/Desktop/IWCR/envirpeer.csv")
 
 general_info <- data_raw %>%
@@ -72,9 +61,10 @@ general_info <- data_raw %>%
   filter(!is.na(BMI_currentwt)) #dropped 383, n=2,822
 ```
 
-```{r, warning=FALSE, echo=FALSE}
+```{r Table1Demographics, warning=FALSE, echo=FALSE}
 tableone_test <- data_raw %>%
-    select(record_id, age_baseline_y, age_fu_y, BMI_currentwt, mm_male_fem, mm_gend, mm_ethnic, mm_race, mm_ed_lvl, mm_emp_stat, mm_fam_funds)
+  drop_na(age_baseline_y, BMI_currentwt, sallis_diet_encourage, sallis_diet_discourage, sallis_exercise) %>%
+  select(record_id, age_baseline_y, age_fu_y, BMI_currentwt, mm_male_fem, mm_gend, mm_ethnic, mm_race, mm_ed_lvl, mm_emp_stat, mm_fam_funds) #1251 participants
 
 tableone_test <- tableone_test %>%
     rename("Sex"="mm_male_fem",
@@ -148,11 +138,9 @@ t1summary <- tableone_test %>%
 ParticipantDemographics <- kable(t1summary, format = "latex", booktabs = TRUE) %>%
   kable_classic() %>%
   kable_styling(latex_options = "scale_down")
-
-ParticipantDemographics
 ```
 
-```{r, warning=FALSE, echo=FALSE}
+```{r BMIandAgeT1, warning=FALSE, echo=FALSE}
 tableonecont <- tableone_test %>%
   filter(!record_id %in% c(3461, 3554, 3099)) %>% 
   select(record_id, BMI_currentwt, age_baseline_y) %>%
@@ -166,9 +154,7 @@ ParticipantDemos_contiuous <- data.frame(
 )
 ```
 
-Social Support
-
-```{r, warning=FALSE, echo=FALSE}
+```{r SocialSupport, warning=FALSE, echo=FALSE}
 social_support <- data_raw %>%
   select(record_id, me_unheathy:sallis_exercise) %>%
   drop_na() #dropped 1,849, n=1,356
@@ -235,13 +221,8 @@ table2 <- ss_final %>%
                                      ),
         mm_spouse_yn = case_when(mm_spouse_yn == 1 ~ "Yes",
                                  mm_spouse_yn == 0 ~ "No")
-         )
-```
-
-```{r}
-#creating tertiles for scores Diet Encourage, Diet Discourage, and Exercise Encourage
-t2summary <- table2 %>%
-  mutate(
+         ) %>%
+    mutate(
     dietDIStert = cut(`Diet Discouragement Score`, 
                       breaks = quantile(`Diet Discouragement Score`, probs = 0:3/3), 
                       labels = c("Low", "Medium", "High"), 
@@ -256,16 +237,20 @@ t2summary <- table2 %>%
                           include.lowest = TRUE),
     BMI_groups = cut(BMI, 
                      breaks = c(0, 18.5, 24.9, 29.9, 34.9, 39.9, 100),
-                     labels = c("Underweight", "Normal weight", "Overweight", "Obesity", "Obesity II", "Obesity III"),
+                     labels = c("Underweight", "Normal", "Overweight", "Obesity", "Obesity II", "Obesity III"),
                      include.lowest = TRUE),
     Age_groups = cut(Age,
                      breaks = c(0, 20, 30, 40, 50, 60, 70, 80, 90, 100),
                      labels = c("Under 20", "20-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80-89", "90-99"),
                      include.lowest = TRUE)
   )
+```
 
-t2summary <- t2summary %>%
-  select(record_id,Age_groups,Sex,Race,Ethnicity,`Education Level`,`Employment Status`,`Household Annual Income`,Gender,`Marital Status`,mm_spouse_yn,`People in Household`,dietDIStert,dietENCtert,exerciseENCtert, BMI_groups)
+```{r Table2_SS_descriptives, warning=FALSE, echo=FALSE}
+#creating tertiles for scores Diet Encourage, Diet Discourage, and Exercise Encourage
+t2summary <- table2 %>%
+  select(record_id,Age_groups,Sex,Race,Ethnicity,`Education Level`,`Employment Status`,`Household Annual Income`,Gender,`Marital Status`,mm_spouse_yn,`People in Household`,dietDIStert,dietENCtert,exerciseENCtert, BMI_groups) %>%
+  drop_na(BMI_groups)
 
 t2summary$`People in Household` <- as.factor(t2summary$`People in Household`)
 
@@ -292,95 +277,224 @@ BMIbyScores_wide <- BMIbyScores_long %>%
 BMIbyScores_wide <- BMIbyScores_wide %>%
    mutate(dietDIStert = fct_relevel(dietDIStert, "Low", "Medium", "High"),
           dietENCtert = fct_relevel(dietENCtert, "Low", "Medium", "High"),
-          exerciseENCtert = fct_relevel(dietDIStert, "Low", "Medium", "High")
+          exerciseENCtert = fct_relevel(dietDIStert, "Low", "Medium", "High"),
+          BMI_groups = fct_relevel(BMI_groups, "Underweight", "Normal", "Overweight", "Obesity", "Obesity II", "Obesity III")
    )
+```
 
+```{r SS_Descriptives, echo=FALSE, warning=FALSE}
 BMIbyScores_summaryDE <- BMIbyScores_wide %>%
-   group_by(BMI_groups, dietENCtert) %>%
+  group_by(BMI_groups, dietENCtert) %>%
   summarize(
     n = n(),
-    percent = round(n()/nrow(BMIbyScores_wide) * 100, 2))
-
-BMIbyDE <- kable(BMIbyScores_summaryDE, format = "latex", booktabs = TRUE) %>%
-  kable_classic() %>%
-  kable_styling(latex_options = "scale_down")
+    percent = round(n() / nrow(BMIbyScores_wide) * 100, 2),
+    .groups = 'drop'
+  ) %>%
+  pivot_wider(names_from = dietENCtert, values_from = c(n, percent), names_glue = "{dietENCtert}_{.value}") %>%
+  select(BMI_groups, Low_n, Low_percent, Medium_n, Medium_percent, High_n, High_percent) %>%
+  rename(
+    "BMI Group" = BMI_groups,
+    "Low (n)" = Low_n,
+    "Low %" = Low_percent,
+    "Medium (n)" = Medium_n,
+    "Medium %" = Medium_percent,
+    "High (n)" = High_n,
+    "High %" = High_percent
+  )
 
 BMIbyScores_summaryDD <- BMIbyScores_wide %>%
-   group_by(BMI_groups, dietDIStert) %>%
+  group_by(BMI_groups, dietDIStert) %>%
   summarize(
     n = n(),
-    percent = round(n()/nrow(BMIbyScores_wide) * 100, 2))
-
-BMIbyDD <- kable(BMIbyScores_summaryDD, format = "latex", booktabs = TRUE) %>%
-  kable_classic() %>%
-  kable_styling(latex_options = "scale_down")
+    percent = round(n() / nrow(BMIbyScores_wide) * 100, 2),
+    .groups = 'drop'
+  ) %>%
+  pivot_wider(names_from = dietDIStert, values_from = c(n, percent), names_glue = "{dietDIStert}_{.value}") %>%
+  select(BMI_groups, Low_n, Low_percent, Medium_n, Medium_percent, High_n, High_percent)%>%
+  rename(
+    "BMI Group" = BMI_groups,
+    "Low (n)" = Low_n,
+    "Low %" = Low_percent,
+    "Medium (n)" = Medium_n,
+    "Medium %" = Medium_percent,
+    "High (n)" = High_n,
+    "High %" = High_percent
+  )
 
 BMIbyScores_summaryEE <- BMIbyScores_wide %>%
-   group_by(BMI_groups, exerciseENCtert) %>%
+  group_by(BMI_groups, exerciseENCtert) %>%
   summarize(
     n = n(),
-    percent = round(n()/nrow(BMIbyScores_wide) * 100, 2))
+    percent = round(n() / nrow(BMIbyScores_wide) * 100, 2),
+    .groups = 'drop'
+  ) %>%
+  pivot_wider(names_from = exerciseENCtert, values_from = c(n, percent), names_glue = "{exerciseENCtert}_{.value}") %>%
+  select(BMI_groups, Low_n, Low_percent, Medium_n, Medium_percent, High_n, High_percent)%>%
+  rename(
+    "BMI Group" = BMI_groups,
+    "Low (n)" = Low_n,
+    "Low %" = Low_percent,
+    "Medium (n)" = Medium_n,
+    "Medium %" = Medium_percent,
+    "High (n)" = High_n,
+    "High %" = High_percent
+  )
+```
 
-BMIbyEE <- kable(BMIbyScores_summaryEE, format = "latex", booktabs = TRUE) %>%
+```{r BMIbyScoresTables, echo=FALSE, warning=FALSE}
+BMIbyDE_table <- kbl(BMIbyScores_summaryDE, format = "latex", booktabs = TRUE,
+                       caption = "Diet Encouragement Subscore",
+                       align = "c") %>%
   kable_classic() %>%
   kable_styling(latex_options = "scale_down")
 
-# corr1 <- cor.test(ss_final$sallis_diet_discourage , ss_final$BMI_currentwt , method="spearman") 
-# corr1 #(p=0.064, rho=0.052) no/weak correlation
-# 
-# corr2 <- cor.test(ss_final$sallis_diet_encourage, ss_final$BMI_currentwt, method="spearman")
-# corr2 #(p=4.805e-06, rho=0.12) weak positive statistically significant correlation
-# 
-# corr3 <- cor.test(ss_final$sallis_exercise, ss_final$BMI_currentwt, method="spearman")
-# corr3 #(p=5.556e-12, rho=-0.19) weak negative statistically significant correlation
-# 
-# ggplot(data=ss_final, aes(x=sallis_exercise, y=BMI_currentwt)) + 
-#   geom_point()
-# 
-# ggplot(data=ss_final, aes(x=sallis_diet_encourage, y=BMI_currentwt)) + 
-#   geom_point()
-# 
-# ggplot(data=ss_final, aes(x=sallis_diet_discourage, y=BMI_currentwt)) + 
-#   geom_point()
+BMIbyDD_table <- kable(BMIbyScores_summaryDD, format = "latex", booktabs = TRUE,
+                       caption = "Diet Discouragement Subscore",
+                       align = "c") %>%
+  kable_classic() %>%
+  kable_styling(latex_options = "scale_down")
+
+BMIbyEE_table <- kable(BMIbyScores_summaryEE, format = "latex", booktabs = TRUE,
+                       caption = "Exercise Encouragement Subscore",
+                       align = "c") %>%
+  kable_classic() %>%
+  kable_styling(latex_options = "scale_down")
 ```
 
-According to Spearman's correlation test, there are weak correlations between encouraging support, exercise support, and BMI.
-
-My Food Environment
-
-```{r}
-my_fd_env <- data_raw %>%
-  select(record_id, me_fresh_fr:mesa_foodenv_score) %>%
-  drop_na() #dropped 1,830, n=1,375
-
-fde_final <- left_join(my_fd_env, general_info,
-                      join_by(record_id == record_id))
-# 
-# corr4 <- cor.test(fde_final$mesa_foodenv_score, fde_final$BMI_currentwt, method="spearman")
-# corr4
-# 
-# linmod <- lm(BMI_currentwt ~ mesa_foodenv_score, data=fde_final)
-# summary(linmod)
-# 
-# ggplot(data=fde_final, aes(x=mesa_foodenv_score, y=BMI_currentwt)) + 
-#   geom_point()
-
+```{r, echo=FALSE, warning=FALSE}
+SS_stats <- table2 %>%
+  select(dietENCtert:Age_groups, record_id, `Diet Encouragement Score`:Age, BMI, Sex, Race, `Marital Status`, `Education Level`:`People in Household`) %>%
+  filter(record_id!=3461) %>%
+  filter(record_id!=3554) %>%
+  drop_na(BMI) #2 NA
 ```
 
-According to Spearman's correlation test, there is a statistically significant (p=6.243e-08) but weak (-0.15), negative correlation between PFE and BMI. The linear model using BMI as an outcome predicts a 0.33 unit decrease in BMI with every unit increase in the MESA Food Environment scale. *I don't think these are enough though, and I'm not sure what the next move is.*
+```{r DietEncouragementStats, echo=FALSE, warning=FALSE}
+DE_model1 <- lm(`Diet Encouragement Score`~BMI, data=SS_stats)
+# summary(DE_model1) #For every one unit increase in BMI, Score increases by 0.07 units, p<0.001. R^2 = 0.0135, only 1.35% of variance in Score is explained by BMI
 
-Table 2 - Social Support Household Size (mm_numb_ppl_live) Marital Status (mm_mart_stat) BMI of partner ? Sallis scores (3)
+DE_model2 <- lm(`Diet Encouragement Score`~BMI + Age + Sex, data=SS_stats)
+# summary(DE_model2) #For every one unit increase in BMI, Score increases by 0.076. For every one year increase in age, Score decreases by 0.057. Males score 0.89 points higher than females, p-value=0.025
 
-Table 3 - PFE MESA score Broken up into income categories?
+DE_model3 <- lm(`Diet Encouragement Score`~BMI + Age + Sex + `People in Household` , data=SS_stats)
+# summary(DE_model3) #For every unit increase in BMI, Score increases by 0.073 (p-value<0.001). For every one-year increase in Age, Score decreases by 0.051 (p-value<0.001). Average mean Score for males is 0.92 points higher than females (p-value=0.0199). For every one-person increase in the household, Score increases by 0.255 (p-value=0.0121). R^2=0.0477, indicating that approximately 4.77% of variablility in Score is explained by BMI, Age, Sex, and People in Household.
+```
+
+```{r DietDiscouragementStats, echo=FALSE, warning=FALSE}
+DD_model1 <- lm(`Diet Discouragement Score`~BMI, data=SS_stats)
+# summary(DD_model1) #For every one unit increase in BMI, Score increases by 0.032 units, p=0.53 R^2 = 0.0027, only 0.27% of variance in Score is explained by BMI
+
+DD_model2 <- lm(`Diet Discouragement Score`~BMI + Age + Sex, data=SS_stats)
+# summary(DD_model2) #For every one unit increase in BMI, Score increases by 0.034 (p=0.048) For every one year increase in age, Score decreases by 0.049 (p<0.001). Males score 0.54 points higher than females, p-value=0.17. R^2 = 0.025
+
+DD_model3 <- lm(`Diet Discouragement Score`~BMI + Age + Sex + `People in Household` + `Marital Status`, data=SS_stats)
+# summary(DD_model3)
+#For every unit increase in BMI, Score increased by 0.038 (p-value=0.026). For every year increase in Age, Score decreased by 0.035 (p-value=0.0027). For every person added to household, Score increases by 0.49 (p-value<0.001). Participants that are married had a higher Score compared to other categories, by 1.62 (p-value 0.0001). R^2 = 0.067, meaning 6.7% of variability in score can be explained by the variables.
+
+#BMI was only statistically significant in the third model
+```
+
+```{r ExerciseEncouragementStats, echo=FALSE, warning=FALSE}
+EE_model1 <- lm(`Exercise Encouragement Score`~BMI, data=SS_stats)
+# summary(EE_model1) #For every one unit increase in BMI, EES decreases by 0.21, p<0.001. 
+
+EE_model2 <- lm(`Exercise Encouragement Score`~BMI + Age + Sex, data=SS_stats)
+# summary(EE_model2) #For every one unit increase in BMI, EES decreases by 0.21, p<0.001. For every year increase in age, EES decreases by 0.068, p=0.0005. 
+
+EE_model3 <- lm(`Exercise Encouragement Score`~BMI + Age + Sex + `Education Level` , data=SS_stats)
+# summary(EE_model3)
+#BMI ( 1 unit increase in BMI = 0.21 decrease in score, p<0.001), Age (1 unit increase in age = 0.067 decrease in score p=0.0006)
+#
+```
 
 ## Results
 
-Our final sample included 1,375 participants for analysis of PFE and 1,356 participants for SS. The combined participants had a mean BMI of 33.21 kg/m^2^ +/- 8.37 (SD), n=2,819, and average age of 51.85 years +/- 14.24 (SD), n=1,698. Participant characteristics can be found in Table 1. Of note, the participants primarily identified as female and white/Caucasian, comprising of 84.6% and 72.8% of the total sample, respectively.
+Our final sample included 1,248 participants. The combined participants had a mean BMI of 33.13 kg/m^2^ +/- 8.40 (SD), and an average age of 51.79 years +/- 14.26 (SD). Participant characteristics can be found in Table 1. Of note, the participants primarily identified as female and white/Caucasian, comprising of 83.4% and 76.8% of the total sample, respectively.
 
-
-```{r}
+```{r, echo=FALSE, warning=FALSE}
 ParticipantDemographics
-BMIbyEE
-BMIbyDD
-BMIbyDE
 ```
+
+#### Social Support
+
+Three subscores were used to assess Social Support: Diet Encouragement, Diet Discouragement, and Exercise Encouragement. The tables below show the breakdown of scores by BMI category.
+
+```{r, echo=FALSE, warning=FALSE}
+BMIbyDE_table
+BMIbyDD_table
+BMIbyEE_table
+```
+
+##### Diet Encouragement
+
+The Diet Encouragement Subscore (DES) considered 5 questions from the Sallis Social Support for Diet and Exercise, measuring perceived encouragement towards healthy eating habits from family and friends. BMI, age, sex, and number of people in the household were considered in the final model.
+
+For every unit increase in BMI, DES increased by 0.073 (p-value\<0.001). For every one-year increase in age, DES decreased by 0.051 (p-value\<0.001). Average mean DES for males is 0.92 points higher than females (p-value=0.0199). For every one-person increase in the household, DES increased by 0.255 (p-value=0.0121). Approximately 4.77% of variability in DES is explained by BMI, age, sex, and people in the household (R^2^=0.0477). Race, education level, marital status, and annual household income were not significant covariates.
+
+##### Diet Discouragement
+
+The Diet Discouragement Subscore (DDS) considered 5 questions measuring perceived discouragement towards healthy eating habits from one's social circle. BMI, age, number of people in the household, and marital status were considered in the final model.
+
+For every unit increase in BMI, DDS increased by 0.038 (p-value=0.026). For every year increase in age, DDS decreased by 0.035 (p-value=0.0027). For every person added to household, DDS increased by 0.49 (p-value\<0.001). Participants that were married at the time of the survey, on average, had a higher DDS compared to other categories, by 1.62 points (p-value 0.0001). 6.7% of the variability observed in DDS can be explained by the aforementioned variables (R\^2 = 0.0670). There were no significant differences observed when race, education level, and household annual income were accounted for. BMI was only statistically significant in the third model.
+
+##### Exercise Encouragement
+
+The Exercise Encouragement Subscore (EES) considered 13 questions in the Sallis Social Support for Diet and Exercise scale that measured perceived encouragement towards exercising from family and friends. Age was the only additional covariate included in the final model, as sex, race, number of people in the household, education level, annual household income, and marital status were not statistically significant covariates.
+
+For every one unit increase in BMI, EES decreased by 0.21 (p-value\<0.001). For every one year increase in age, EES decreased by 0.067 (p-value=0.006). 4.02% of the variance observed in EES is explained by BMI and age (R^2^=0.0402).
+
+## Discussion
+
+Participants with higher BMIs tended to score higher in the DES, along with male participants and participants with more people in their household, compared to participants that had a lower BMI, were female, and had less people in their household. This suggests that having a higher BMI might be correlated with having more positive social interactions when related to healthy eating habits. Craven et al. (2018) reported a comparable finding in that participants with higher social support had greater odds of being overweight or obese. A reason for this could be that social support tends to be more focused on those needing it the most, i.e. those with greater BMIs need greater support to eat healthier (Craven 2018). However, as BMI increased in our population, DDS tended to increase, as well. A higher DDS score indicates more discouragement (or a lack of support) towards healthy eating habits. Similarly as BMI increased, EES tended to decrease in our population, indicating less support towards exercising. Our findings conflict the previous theory, however, confer with Winston's et al. (2015) findings that participants in "negative" social networks, defined by negative or discouraging comments towards healthy habits, tended to gain more weight than those in "helpful" social networks.
+
+Winston et al. (2015) also found that participants having at least one child aiding in healthy eating had greater weight loss than participants without. The number of people in the household tended to influence both DES and DDS in our population, with participants with more people in the household scoring higher in both scores, on average. Interacting with more people on a daily basis can introduce different dynamics that were not accounted for in our measure of household size.
+
+Sex and race did not seem to influence SS significantly in our population, which is interesting considering the differences observed in other studies (Ashida 2012, Hosseini 2021, Lee 2013, Wieland 2020).
+
+A limitation of this study is in its cross-sectional nature, as any correlations observed do not infer causation. Additionally, the participants were primarily female-identifying and Caucasian/White. The lack of diversity in the study population adds difficulty in generalizing the results to a wider population.
+
+## Conclusion
+
+With obesity rates continuing to increase globally, there is a great need to understand the complexity of the disease. Advancing research in non-biological determinants of health aids in developing more interventions for obesity, with generally more accessibility and affordability than personalized nutrition interventions.
+
+This study utilized data from a subset of the International Weight Control Registry, focusing on participants from the United States. Certain factors such as BMI, age, and number of people in the household were found to significantly influence social support as defined by scores of the Sallis Social Support for Diet and Exercise scale. Despite statistical significance, relatively low correlations suggest that there may be additional variables to consider in understanding the relationship between social support and weight status.
+
+## References
+
+Ayala-Marín, A.M. et al., 2020. Consideration of Social Disadvantages for Understanding and Preventing Obesity in Children. Frontiers in Public Health, 8, p.423.
+
+Ashida, S., Wilkinson, A.V. & Koehly, L.M., 2012. Social Influence and Motivation to Change Health Behaviors among Mexican-Origin Adults: Implications for Diet and Physical Activity. American Journal of Health Promotion, 26, pp.176–179.
+
+Cani, P.D. & Van Hul, M., 2023. Gut microbiota in overweight and obesity: crosstalk with adipose tissue. Nature Reviews Gastroenterology & Hepatology.
+
+Christakis, N.A., 2007. The Spread of Obesity in a Large Social Network over 32 Years. New England Journal of Medicine.
+
+Craven, M.R. et al., 2018. Social Support for Exercise as a Predictor of Weight and Physical Activity Status Among Puerto Rican and Mexican Men: Results From the Latino Men's Health Initiative. American Journal of Men's Health, 12(4), pp.766–778.
+
+Glonti, K. et al., 2016. Psychosocial environment: definitions, measures and associations with weight status – a systematic review. Obesity Reviews, 17, pp.81–95.
+
+Hill, J.O. et al., 2003. Obesity and the Environment: Where Do We Go from Here? Science, 299(5608), pp.853–855.
+
+Hoenink, J.C. et al., 2019. The Moderating Role of Social Neighbourhood Factors in the Association between Features of the Physical Neighbourhood Environment and Weight Status. Obesity Facts, 12(1), pp.14–24.
+
+Hosseini, Z. et al., 2021. Adiposity and the role of diverse social supports: an observational, gender-sensitive study using the baseline Canadian Longitudinal Study on Aging. Public Health Nutrition, 24(18), pp.6103–6112.
+
+Javed, Z. et al., 2022. Social determinants of health and obesity: Findings from a national study of US adults. Obesity, 30(2), pp.491–502.
+
+Lee, W.J. et al., 2013. Social Network Characteristics and Body Mass Index in an Elderly Korean Population. Journal of Preventive Medicine and Public Health, 46(6), pp.336–345.
+
+Mackenbach, J.D. et al., 2019. A Systematic Review on Socioeconomic Differences in the Association between the Food Environment and Dietary Behaviors. Nutrients, 11(9), p.2215.
+
+Shaya, F.T. et al., 2014. Effect of social networks intervention in type 2 diabetes: a partial randomised study. Journal of Epidemiology and Community Health, 68(4), pp.326–332.
+
+Sussner, K.M. et al., 2008. The Influence of Immigrant Status and Acculturation on the Development of Overweight in Latino Families: A Qualitative Study. Journal of Immigrant and Minority Health, 10(6), pp.497–505.
+
+Valenzuela, P.L. et al., 2023. Obesity and the risk of cardiometabolic diseases. Nature Reviews Cardiology, 20(7), pp.475–494.
+
+Wang, Y. & Beydoun, M.A., 2007. The Obesity Epidemic in the United States Gender, Age, Socioeconomic, Racial/Ethnic, and Geographic Characteristics: A Systematic Review and Meta-Regression Analysis. Epidemiologic Reviews, 29(1), pp.6–28.
+
+Weir, C.B. & Jan, A., 2023. BMI Classification Percentile And Cut Off Points. StatPearls. StatPearls Publishing.
+
+Wieland, M.L. et al., 2020. Association of social network factors with weight status and weight loss intentions among hispanic adults. Journal of Behavioral Medicine, 43(2), pp.155–165.
+
+Winston, G.J. et al., 2015. Social network characteristics associated with weight loss among black and hispanic adults. Obesity, 23(8), pp.1570–1576.
